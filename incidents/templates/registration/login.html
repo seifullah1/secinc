@@ -1,3 +1,4 @@
+{% load i18n_tags %}
 <!doctype html>
 <html>
 
@@ -119,7 +120,6 @@
 <body data-theme="{{ request.ui_theme }}">
     <div class="card">
         <h2>SecInc</h2>
-        <div style="opacity:.7;margin-bottom:16px">Security Portal</div>
 
         {% if form.errors %}
         <audio autoplay>
@@ -129,12 +129,11 @@
 
         <form method="post">
             {% csrf_token %}
-            <input class="input" name="username" placeholder="{{ t('username') |tr:request }}">
-            <input class="input" type="password" name="password" placeholder="{{ t('password') |tr:request }}">
-            <button class="login-btn">{{ t('login') }}</button>
+            <input class="input" name="username" placeholder="{{ 'username'|tr:request }}">
+            <input class="input" type="password" name="password" placeholder="{{ 'password'|tr:request }}">
+            <button class="login-btn">{{ 'login'|tr:request }}</button>
         </form>
     </div>
-
 </body>
 
 </html>

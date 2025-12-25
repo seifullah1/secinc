@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n_tags %}
 {% block title %}Dashboard — SecInc{% endblock %}
 
 {% block content %}
@@ -13,14 +14,14 @@
 <div class="row g-3">
     <div class="col-md-3">
         <div class="card p-3">
-            <div class="muted">Всего инцидентов</div>
+            <div class="muted">Всего инцидентов: {{ total_incidents }}</div>
             <div class="display-6">{{ total_incidents }}</div>
             <div class="muted small">All time</div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card p-3">
-            <div class="muted">Открытые</div>
+            <div class="muted">Открытые </div>
             <div class="display-6">{{ open_incidents }}</div>
             <div class="muted small">NEW / IN_PROGRESS</div>
         </div>
