@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Отчёты{% endblock %}
+
+{% block content %}
+<h2 class="mb-2">Отчёты</h2>
+<div class="muted mb-4">
+    Формирование отчётов по инцидентам информационной безопасности
+</div>
+
+<div class="card">
+    <h4 class="mb-1">Инциденты (Excel)</h4>
+    <div class="muted mb-3">
+        Выгрузка журнала инцидентов для анализа и передачи руководству
+    </div>
+
+    <a class="service-btn" href="/reports/incidents.xlsx">{{ "download_excel"|tr:request }}</a>
+
+</div>
+{% endblock %}

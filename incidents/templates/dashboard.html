@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — SecInc{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-end justify-content-between mb-3">
+    <div>
+        <h2 class="mb-1">SOC / ISMS Dashboard</h2>
+        <div class="muted">Журнал инцидентов и событий безопасности предприятия</div>
+    </div>
+    <div class="pill muted">User: {{ request.user.username }}</div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-3">
+        <div class="card p-3">
+            <div class="muted">Всего инцидентов</div>
+            <div class="display-6">{{ total_incidents }}</div>
+            <div class="muted small">All time</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3">
+            <div class="muted">Открытые</div>
+            <div class="display-6">{{ open_incidents }}</div>
+            <div class="muted small">NEW / IN_PROGRESS</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3">
+            <div class="muted">События</div>
+            <div class="display-6">{{ total_events }}</div>
+            <div class="muted small">Auth audit</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-3">
+            <div class="muted">LOGIN_FAILED</div>
+            <div class="display-6">{{ failed_events }}</div>
+            <div class="muted small">Brute force signals</div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-3 mt-2">
+
+</div>
+{% endblock %}

@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}SecInc{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- system font -->
+    <style>
+        :root {
+            --bg: #0b0e14;
+            --glass: rgba(255, 255, 255, .08);
+            --border: rgba(255, 255, 255, .15);
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #3b82f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, sans-serif;
+            background: radial-gradient(1200px 600px at 10% 0%, #111827, var(--bg));
+            color: var(--text);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(20px);
+            background: rgba(15, 18, 30, .75);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: auto;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            margin-left: 16px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 48px 32px;
+        }
+
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 22px;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .35);
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 14px;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        th {
+            color: var(--muted);
+            text-align: left;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .danger {
+            background: rgba(239, 68, 68, .2);
+        }
+
+        .warn {
+            background: rgba(245, 158, 11, .2);
+        }
+
+        .ok {
+            background: rgba(34, 197, 94, .2);
+        }
+
+        button {
+            background: var(--accent);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 18px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .nav-links a {
+            padding: 6px 12px;
+            border-radius: 10px;
+            transition: background .2s;
+        }
+
+        .nav-links a.active {
+            background: rgba(255, 255, 255, .12);
+            color: white;
+        }
+
+        .logout-btn {
+            background: rgba(239, 68, 68, .15);
+            border: 1px solid rgba(239, 68, 68, .4);
+            color: #ef4444;
+            padding: 8px 14px;
+            border-radius: 12px;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            padding: 8px 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, .6);
+            text-decoration: none;
+        }
+
+        .nav-links a.active {
+            background: rgba(255, 255, 255, .14);
+            color: #fff;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-btn {
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .2);
+            color: #e5e7eb;
+            text-decoration: none;
+        }
+
+        .logout-btn {
+            padding: 8px 14px;
+            border-radius: 12px;
+            border: 1px solid rgba(239, 68, 68, .4);
+            background: rgba(239, 68, 68, .15);
+            color: #ef4444;
+        }
+
+        :root {
+            --bg: #0b0e14;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --glass: rgba(255, 255, 255, .08);
+            --border: rgba(255, 255, 255, .15);
+            --accent: #3b82f6;
+        }
+
+        body[data-theme="light"] {
+            --bg: #f5f7fb;
+            --text: #0f172a;
+            --muted: #475569;
+            --glass: rgba(0, 0, 0, .04);
+            --border: rgba(0, 0, 0, .10);
+            --accent: #2563eb;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+    </style>
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body data-theme="{{ request.ui_theme }}">
+
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-left">
+                <strong>SecInc</strong>
+
+                <div class="nav-links">
+                    <a href="/">{{ "dashboard"|tr:request }}</a>
+                    <a href="/incidents/">{{ "incidents"|tr:request }}</a>
+                    <a href="/events/" class="{% if 'events' in request.path %}active{% endif %}">{{ "events"|tr:request
+                        }}</a>
+                    <a href="/reports/" class="{% if 'reports' in request.path %}active{% endif %}">{{
+                        "reports"|tr:request }}</a>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <form method="post" action="/ui/lang/" style="display:inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="lang" value="{% if request.ui_lang == 'ru' %}kk{% else %}ru{% endif %}">
+                    <button class="service-btn" type="submit">{% if request.ui_lang == 'ru' %}Қазақша{% else %}Русский{%
+                        endif %}</button>
+                </form>
+
+                <form method="post" action="/ui/theme/" style="display:inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="theme"
+                        value="{% if request.ui_theme == 'dark' %}light{% else %}dark{% endif %}">
+                    <button class="service-btn" type="submit">{% if request.ui_theme == 'dark' %}Светлая{% else
+                        %}Тёмная{% endif %}</button>
+                </form>
+
+                <a class="service-btn" href="/api/docs/" target="_blank">Swagger</a>
+                <a class="service-btn" href="/admin/" target="_blank">Админка</a>
+
+                <form method="post" action="/accounts/logout/" style="display:inline">
+                    {% csrf_token %}
+                    <button class="logout-btn" type="submit">{{ "logout"|tr:request }}</button>
+                </form>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+
+</html>

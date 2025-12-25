@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Security Events — SecInc{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-end justify-content-between mb-3">
+    <div>
+        <h3 class="mb-1">Security events (Auth)</h3>
+        <div class="muted">Последние 300 событий логина</div>
+    </div>
+</div>
+
+<div class="card p-3">
+    <div class="table-responsive">
+        <table class="table table-sm table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Type</th>
+                    <th>Username</th>
+                    <th>IP</th>
+                    <th>Admin</th>
+                    <th>Path</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in items %}
+                <tr>
+                    <td class="muted">{{ e.created_at|date:"Y-m-d H:i:s" }}</td>
+                    <td>
+                        {% if e.event_type == "login_failed" %}
+                        <span class="badge text-bg-danger">LOGIN_FAILED</span>
+                        {% else %}
+                        <span class="badge text-bg-success">LOGIN_SUCCESS</span>
+                        {% endif %}
+                    </td>
+                    <td class="fw-semibold">{{ e.username }}</td>
+                    <td class="muted">{{ e.ip_address }}</td>
+                    <td class="muted">{% if e.is_admin_panel %}Yes{% else %}No{% endif %}</td>
+                    <td class="muted">{{ e.path }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

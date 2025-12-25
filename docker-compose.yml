@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: secinc_db
+    environment:
+      POSTGRES_DB: secinc
+      POSTGRES_USER: secinc_user
+      POSTGRES_PASSWORD: secinc_pass
+    ports:
+    - "5433:5432"
+    volumes:
+      - secinc_pg:/var/lib/postgresql/data
+
+volumes:
+  secinc_pg:
