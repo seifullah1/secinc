@@ -1,6 +1,7 @@
 Стек
 Python 3.11
-Django + Django REST Framework
+Django
+Django REST Framework
 PostgreSQL
 Docker (используется для базы данных)
 Как запустить проект локально
@@ -49,9 +50,12 @@ DB_HOST=127.0.0.1
 DB_PORT=5433
 Файл .env не коммитится и создаётся локально.
 Демо-версия
-Хост: https://secinc.onrender.com
-Логин: admin
-Пароль: admin123
+Хост
+https://secinc.onrender.com
+Логин
+admin
+Пароль
+admin123
 Требования
 Python 3.11+
 Docker
