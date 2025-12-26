@@ -44,6 +44,11 @@ DB_HOST=127.0.0.1
 DB_PORT=5433
 .env не коммитится и создаётся локально.
 
+хост https://secinc.onrender.com
+креды: 
+admin
+admin123
+
 Требования
 Python 3.11+
 Docker + Docker Compose
