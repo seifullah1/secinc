@@ -157,7 +157,7 @@
 
     {% if form.errors %}
     <script>
-        һ(function () {
+        (function () {
             const inputs = [document.getElementById("id_username"), document.getElementById("id_password")].filter(Boolean);
             inputs.forEach((el) => {
                 el.classList.remove("shake");
@@ -168,6 +168,7 @@
             if (u) u.focus();
         })();
     </script>
+
     {% endif %}
 </body>
 
